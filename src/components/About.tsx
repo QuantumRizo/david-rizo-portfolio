@@ -7,7 +7,7 @@ const timeline = [
   { period: "2026 — Now", title: "Software Engineer", org: "Central de Negocios", note: "Full-stack platforms and internal tools." },
   { period: "2025 — 2026", title: "Data Analyst", org: "Central de Negocios", note: "Statistical modelling and data pipelines." },
   { period: "2025 — 2026", title: "Coding Program Leader", org: "French Woods Festival", note: "Designed and taught the programming curriculum." },
-  { period: "2025", title: "Research, Social Service", org: "Instituto de Astronomía, UNAM", note: "Deep learning for galaxy spectra." },
+  { period: "2024", title: "Research, Social Service", org: "Instituto de Astronomía, UNAM", note: "Deep learning for galaxy spectra." },
   { period: "2020 — 2024", title: "B.Sc. Physics", org: "UNAM", note: "Theoretical and experimental physics." },
 ];
 

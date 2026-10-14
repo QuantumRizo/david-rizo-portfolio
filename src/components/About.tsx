@@ -29,7 +29,7 @@ const About = () => (
           className="overflow-hidden rounded-[2rem] border border-white/[0.06]"
         >
           <img
-            src="/davidrizo.webp"
+            src="/david-rizo.webp"
             alt="David Rizo"
             loading="lazy"
             className="aspect-[4/5] w-full object-cover object-[40%_30%]"

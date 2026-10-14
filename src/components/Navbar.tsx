@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Research", href: "#research" },
-  { name: "Camp Lead", href: "#camp-lead" },
-  { name: "About", href: "#about" },
+  { name: "Galaxy Classifier", href: "/projects/galaxy-classifier" },
+  { name: "Camp Lead", href: "/projects/camp-lead" },
+  { name: "About", href: "/#about" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -28,19 +29,19 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex h-12 max-w-[1080px] items-center justify-between px-5">
-        <a href="#top" className="text-[15px] font-semibold tracking-tight text-foreground">
+        <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-[15px] font-semibold tracking-tight text-foreground">
           David Rizo
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="text-xs text-foreground/70 transition-colors hover:text-foreground"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <a
             href="https://github.com/QuantumRizo"
@@ -68,16 +69,24 @@ const Navbar = () => {
         }`}
       >
         <div className="flex flex-col px-5 pb-6 pt-2">
-          {[...navLinks, { name: "GitHub", href: "https://github.com/QuantumRizo" }].map((link) => (
-            <a
+          {navLinks.map((link) => (
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               onClick={() => setIsMenuOpen(false)}
               className="border-b border-white/[0.06] py-3 text-2xl font-semibold tracking-tight text-foreground/90"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
+          <a
+            href="https://github.com/QuantumRizo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-3 text-2xl font-semibold tracking-tight text-foreground/90"
+          >
+            GitHub
+          </a>
         </div>
       </div>
     </header>

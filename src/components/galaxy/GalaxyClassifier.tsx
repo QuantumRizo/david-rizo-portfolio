@@ -6,6 +6,7 @@ import Architecture from "./Architecture";
 import Results from "./Results";
 import { REPO_URL } from "./data";
 
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const Reveal = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -44,7 +45,7 @@ const fromScratch = [
 ];
 
 const GalaxyClassifier = () => (
-  <section id="research" className="relative py-24 md:py-36">
+  <section className="relative pb-24 pt-10 md:pb-36 md:pt-14">
     <div className="mx-auto max-w-[1080px] px-5">
       {/* Title */}
       <Reveal className="text-center">
@@ -72,10 +73,10 @@ const GalaxyClassifier = () => (
       <Reveal className="mt-16 md:mt-20">
         <figure className="relative overflow-hidden rounded-[2rem] border border-white/[0.06]">
           <img
-            src="/galaxyProject1.webp"
+            src="/projects/galaxy-classifier/centaurus-a.webp"
             alt="Centaurus A, an active galaxy with jets launched by its central black hole"
             className="aspect-[16/10] w-full object-cover object-[50%_45%] md:aspect-[21/9]"
-            loading="lazy"
+            fetchPriority="high"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
           <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-6 md:flex-row md:items-end md:justify-between md:p-10">

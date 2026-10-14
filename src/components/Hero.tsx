@@ -27,7 +27,7 @@ const Hero = () => {
 
         <motion.h1
           {...rise(0.25)}
-          className="headline mx-auto mt-6 max-w-4xl text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.98]"
+          className="headline mx-auto mt-6 max-w-6xl text-[clamp(2.75rem,7.5vw,6rem)] leading-[0.98]"
         >
           Physics
           <br />
@@ -43,10 +43,10 @@ const Hero = () => {
 
         <motion.div {...rise(0.6)} className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="#research"
+            href="#work"
             className="rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
           >
-            Explore the research
+            See my work
           </a>
           <a
             href="#contact"
@@ -58,8 +58,8 @@ const Hero = () => {
       </div>
 
       <motion.a
-        href="#research"
-        aria-label="Scroll to research"
+        href="#work"
+        aria-label="Scroll to work"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 1 }}

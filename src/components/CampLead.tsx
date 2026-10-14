@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BrowserFrame from "@/components/BrowserFrame";
 import { ArrowUpRight, Inbox, ScanText, ShieldCheck, MousePointerClick, LayoutDashboard } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -54,8 +55,29 @@ const principles = [
   { title: "Watched around the clock", body: "Heartbeat monitoring, alerts and daily verified backups keep it running unattended." },
 ];
 
+const Chapter = ({ eyebrow, title, children }: { eyebrow: string; title: string; children?: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 0.9, ease }}
+    className="mb-10 max-w-3xl md:mb-14"
+  >
+    <p className="eyebrow">{eyebrow}</p>
+    <h2 className="headline mt-4 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">{title}</h2>
+    {children && <p className="lede mt-5">{children}</p>}
+  </motion.div>
+);
+
+const reveal = {
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 1, ease },
+};
+
 const CampLead = () => (
-  <section id="camp-lead" className="relative overflow-hidden border-t border-white/[0.06] py-24 md:py-36">
+  <section className="relative overflow-hidden pb-24 pt-10 md:pb-36 md:pt-14">
     <div className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] -translate-x-1/2 bg-[radial-gradient(closest-side,hsl(212_86%_59%/0.07),transparent)]" />
     <div className="relative mx-auto max-w-[1080px] px-5">
       <motion.div
@@ -66,7 +88,7 @@ const CampLead = () => (
         className="text-center"
       >
         <p className="eyebrow">AI in production</p>
-        <h2 className="headline mt-5 text-[clamp(2.75rem,7vw,5.5rem)] leading-[1]">Camp Lead.</h2>
+        <h1 className="headline mt-5 text-[clamp(2.75rem,7vw,5.5rem)] leading-[1]">Camp Lead.</h1>
         <p className="lede mx-auto mt-6 max-w-2xl">
           An AI agent that turns enquiry emails into registered families. No copy-paste, no typing.
         </p>
@@ -82,10 +104,83 @@ const CampLead = () => (
           </span>
           Live at French Woods Festival
         </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <a
+            href="https://getcamplead.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.03]"
+          >
+            Visit getcamplead.com
+          </a>
+          <a href="#how-it-works" className="text-sm font-medium text-primary hover:text-foreground">
+            See how it works <span aria-hidden="true">›</span>
+          </a>
+        </div>
       </motion.div>
 
+      {/* Product shot */}
+      <motion.figure {...reveal} className="mt-16 md:mt-20">
+        <BrowserFrame
+          src="/projects/camp-lead/dashboard.webp"
+          alt="Camp Lead operations dashboard showing leads processed, families registered and incoming emails"
+          url="getcamplead.com/dashboard"
+          eager
+        />
+        <figcaption className="mt-4 text-center text-xs text-muted-foreground/70">
+          The operations dashboard the camp team uses. Shown here with demo data; real family details stay private.
+        </figcaption>
+      </motion.figure>
+
+      {/* Client */}
+      <div className="mt-24 grid items-center gap-10 md:mt-32 md:grid-cols-2 md:gap-16 [&>*]:min-w-0">
+        <motion.div {...reveal}>
+          <p className="eyebrow">The client</p>
+          <h2 className="headline mt-4 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05]">French Woods Festival.</h2>
+          <div className="mt-5 space-y-4 text-[17px] leading-relaxed text-muted-foreground">
+            <p>
+              French Woods is a performing-arts summer camp in New York State, where campers spend the summer on
+              theatre, music, dance, circus and more. Every season brings a steady stream of families writing in to ask
+              about it.
+            </p>
+            <p>
+              I first worked there leading the coding program. Today Camp Lead handles their enquiry inbox, so the
+              office spends its time talking to families instead of copying their details between systems.
+            </p>
+          </div>
+          <a
+            href="https://www.frenchwoods.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-foreground"
+          >
+            frenchwoods.com
+            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </motion.div>
+        <motion.figure {...reveal} transition={{ ...reveal.transition, delay: 0.12 }}>
+          <div className="rounded-[2rem] bg-white p-8 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] md:p-10">
+            <img
+              src="/projects/camp-lead/french-woods-logo.webp"
+              alt="French Woods Festival of the Performing Arts logo"
+              loading="lazy"
+              className="w-full"
+            />
+          </div>
+        </motion.figure>
+      </div>
+
+      <div className="hairline my-24 md:my-32" />
+
+      <div id="how-it-works" className="scroll-mt-20">
+        <Chapter eyebrow="How it works" title="From an email to a registered family.">
+          Five steps run automatically for every message that arrives. A person only steps in when the bot decides it
+          shouldn't continue on its own.
+        </Chapter>
+      </div>
+
       {/* Flow */}
-      <div className="relative mt-16 md:mt-24">
+      <div className="relative">
         <div className="absolute bottom-8 left-[27px] top-8 w-px bg-white/10 md:bottom-auto md:left-[10%] md:right-[10%] md:top-[27px] md:h-px md:w-auto">
           <motion.div
             className="absolute left-0 size-1.5 -translate-x-[2.5px] rounded-full bg-primary shadow-[0_0_12px_2px_hsl(var(--primary)/0.7)] md:hidden"
@@ -171,6 +266,39 @@ const CampLead = () => (
           </p>
         </motion.div>
       </div>
+
+      {/* More screens */}
+      <div className="mt-24 md:mt-32">
+        <Chapter eyebrow="The product" title="Everything the team needs, on one screen.">
+          Every family the bot registered, where each lead came from, and anything waiting for a person to look at.
+        </Chapter>
+        <div className="grid gap-8 md:grid-cols-2 md:gap-5 [&>*]:min-w-0">
+          <motion.figure {...reveal}>
+            <BrowserFrame
+              src="/projects/camp-lead/registered-leads.webp"
+              alt="Registered leads table with parents, campers, lead source and CampMinder save status"
+              url="getcamplead.com/dashboard#leads"
+            />
+            <figcaption className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+              <span className="text-foreground">Registered leads.</span> Each family, its campers, and a confirmed save
+              in CampMinder. Demo data.
+            </figcaption>
+          </motion.figure>
+          <motion.figure {...reveal} transition={{ ...reveal.transition, delay: 0.12 }}>
+            <BrowserFrame
+              src="/projects/camp-lead/getcamplead-site.webp"
+              alt="The getcamplead.com product website"
+              url="getcamplead.com"
+            />
+            <figcaption className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+              <span className="text-foreground">getcamplead.com.</span> The product site for other camps that use
+              CampMinder.
+            </figcaption>
+          </motion.figure>
+        </div>
+      </div>
+
+      <div className="hairline my-24 md:my-32" />
 
       {/* Human review */}
       <motion.div

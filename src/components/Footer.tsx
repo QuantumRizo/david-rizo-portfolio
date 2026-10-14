@@ -1,121 +1,57 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Phone, Instagram, Mail, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const links = [
+  { label: "GitHub", href: "https://github.com/QuantumRizo" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/felix-rizo-dev/" },
+  { label: "WhatsApp", href: "https://wa.me/525624290009" },
+  { label: "Instagram", href: "https://instagram.com/david_rizo_136" },
+];
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Tech Stack", href: "/#stack" }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Phone,
-      href: "https://wa.me/525624290009",
-      label: "WhatsApp",
-      text: "+52 56 2429 0009"
-    },
-    {
-      icon: Mail,
-      href: "mailto:davidrizo.phys@gmail.com",
-      label: "Email",
-      text: "davidrizo.phys@gmail.com"
-    },
-    {
-      icon: Instagram,
-      href: "https://instagram.com/david_rizo_136",
-      label: "Instagram",
-      text: "@david_rizo_136"
-    },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/felix-rizo-dev",
-      label: "LinkedIn",
-      text: "LinkedIn"
-    },
-    {
-      icon: Github,
-      href: "https://github.com/QuantumRizo",
-      label: "GitHub",
-      text: "GitHub"
-    }
-  ];
-
-  return (
-    <footer id="footer" className="bg-black text-slate-300 py-20 relative overflow-hidden">
-
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 relative z-10">
-
-        {/* BRAND COLUMN */}
-        <div className="md:col-span-5 space-y-6">
-          <Link to="/" className="text-3xl font-bold text-white tracking-tighter font-mono">
-            DAVID_RIZO
-          </Link>
-          <p className="text-lg leading-relaxed max-w-sm text-slate-400">
-            Software Engineer | Physicist. Building intelligent, scalable, and user-centric digital experiences. Let's build something great together.
-          </p>
-        </div>
-
-        {/* QUICK LINKS */}
-        <div className="md:col-span-3 space-y-6">
-          <h3 className="text-white font-bold text-lg tracking-wide">Explore</h3>
-          <ul className="space-y-3">
-            {quickLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="hover:text-primary transition-colors flex items-center group w-fit"
-                >
-                  <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* CONTACT COLUMN */}
-        <div className="md:col-span-4 space-y-6">
-          <h3 className="text-white font-bold text-lg tracking-wide">Connect</h3>
-          <ul className="space-y-4">
-            {socialLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 hover:text-white transition-colors group"
-                  >
-                    <div className="p-2 rounded-full bg-white/5 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <span className="font-medium">{link.text}</span>
-                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 transition-all" />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-
-      {/* COPYRIGHT BAR */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 relative z-10">
-        <p>&copy; {currentYear} David Rizo. All rights reserved.</p>
-        <div className="flex gap-6">
-          <span>Privacy Policy</span>
-          <span>Terms of Service</span>
-        </div>
-      </div>
-
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer id="contact" className="relative overflow-hidden border-t border-white/[0.06]">
+    <div className="pointer-events-none absolute bottom-[-40%] left-1/2 h-[600px] w-[1000px] -translate-x-1/2 bg-[radial-gradient(closest-side,hsl(212_86%_59%/0.09),transparent)]" />
+    <div className="relative mx-auto max-w-[1080px] px-5 py-24 text-center md:py-36">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className="eyebrow">Contact</p>
+        <h2 className="headline mx-auto mt-5 max-w-3xl text-[clamp(2.5rem,6.5vw,5rem)] leading-[1]">
+          Have a hard problem?
+          <br />
+          <span className="text-muted-foreground">Let's talk.</span>
+        </h2>
+        <a
+          href="mailto:davidrizo.phys@gmail.com"
+          className="mt-10 inline-flex rounded-full bg-primary px-7 py-3.5 text-[15px] font-medium text-primary-foreground transition-transform hover:scale-[1.03] active:scale-[0.98]"
+        >
+          davidrizo.phys@gmail.com
+        </a>
+        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {l.label}
+                <ArrowUpRight className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    </div>
+    <div className="relative mx-auto flex max-w-[1080px] flex-col gap-2 border-t border-white/[0.06] px-5 py-6 text-xs text-muted-foreground/70 md:flex-row md:justify-between">
+      <p>© {new Date().getFullYear()} Félix David Rizo Serrano</p>
+      <p>Mexico City</p>
+    </div>
+  </footer>
+);
 
 export default Footer;

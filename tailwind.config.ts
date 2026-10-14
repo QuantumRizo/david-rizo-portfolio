@@ -58,15 +58,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        blueprint: {
-          DEFAULT: "#0047AB", // Cobalt/Royal Blue for the main background
-          light: "#3366cc",   // Lighter shade for grid/highlights
-          dark: "#003380",    // Darker shade if needed
-        },
+        agn: "hsl(var(--agn))",
+        starburst: "hsl(var(--starburst))",
       },
       fontFamily: {
-        chalk: ['"Fredericka the Great"', "cursive"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        sans: ["-apple-system", "BlinkMacSystemFont", '"SF Pro Text"', "Inter", "system-ui", "sans-serif"],
+        display: ["-apple-system", "BlinkMacSystemFont", '"SF Pro Display"', "Inter", "system-ui", "sans-serif"],
+        mono: ['"SF Mono"', '"JetBrains Mono"', "ui-monospace", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
